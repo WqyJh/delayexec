@@ -17,6 +17,7 @@ import (
 )
 
 const (
+	Version    = "0.1.0-alpha"
 	TimeFormat = "2006-01-02 15:04:05"
 )
 
@@ -188,6 +189,10 @@ func cmdRun(cmd *cobra.Command, args []string) {
 		}
 	}
 
+	if len(args) < 1 {
+		log.Fatalf("no command provided for delay execution")
+	}
+
 	if argCron != "" {
 		parser := cron.NewParser(cron.Minute | cron.Hour | cron.Dom | cron.Month | cron.Dow)
 		_, err := parser.Parse(argCfg)
@@ -218,10 +223,11 @@ func cmdRun(cmd *cobra.Command, args []string) {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "delayexec",
-	Short: "delayexec is a command line tool to delay command execution.",
-	Long:  `delayexec depends on crontab to delay command execution, which supports oneshot execution and repeat execution.`,
-	Run:   cmdRun,
+	Use:     "delayexec",
+	Version: Version,
+	Short:   "delayexec is a command line tool to delay command execution.",
+	Long:    `delayexec depends on crontab to delay command execution, which supports oneshot execution and repeat execution.`,
+	Run:     cmdRun,
 }
 
 func init() {
