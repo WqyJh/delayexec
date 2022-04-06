@@ -8,7 +8,6 @@ import (
 	"os"
 	"os/exec"
 	"path"
-	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -111,10 +110,12 @@ func GetOneshotScriptPath(t time.Time, cmds []string) string {
 func GenerateOneshotScript(t time.Time, cmds []string) string {
 	command := strings.Join(cmds, " ")
 	var cancels []string
-	delayexec, err := filepath.Abs(os.Args[0])
+
+	delayexec, err := os.Executable()
 	if err != nil {
-		log.Fatalf("abspath of '%s' not found: %s", os.Args[0], err.Error())
+		log.Fatalf("executable path of '%s' not found: %s", os.Args[0], err.Error())
 	}
+
 	cancels = append(cancels, delayexec)
 	cancels = append(cancels, "--cancel")
 	cancels = append(cancels, os.Args[1:]...)
