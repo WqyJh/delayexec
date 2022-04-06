@@ -1,5 +1,9 @@
 # delayexec
 
+![Build](https://github.com/WqyJh/delayexec/workflows/Tests/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/WqyJh/delayexec?style=flat-square)](https://goreportcard.com/report/WqyJh/delayexec)
+[![Version](https://img.shields.io/github/release/WqyJh/delayexec.svg?style=flat-square)](https://github.com/WqyJh/delayexec/releases/latest)
+
 Delay command execution depends on crontab.
 
 For oneshot command, automatically calculate due time and add command to crontab, remove from crontab after the command was executed. For repeat command, just add to crontab.
@@ -7,6 +11,16 @@ For oneshot command, automatically calculate due time and add command to crontab
 Note: Make sure crond service is running.
 
 ## Install
+
+Download pre-built binary from [Releases page](https://github.com/WqyJh/delayexec/releases).
+
+```bash
+wget -c https://github.com/WqyJh/delayexec/releases/latest/download/delayexec-linux-amd64.tar.gz -O - | tar -xz delayexec
+chmod +x delayexec
+sudo mv delayexec /usr/local/bin
+```
+
+Or if you have golang environment, just install with go.
 
 ```bash
 go install github.com/WqyJh/delayexec@latest

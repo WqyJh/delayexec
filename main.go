@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	Version    = "0.1.0-alpha"
+	Version    = "0.1.0"
 	TimeFormat = "2006-01-02 15:04:05"
 )
 

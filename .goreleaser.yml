@@ -40,7 +40,7 @@ build:
       goarm: 6
 
 archives:
-  - name_template: "{{.Os}}-{{.Arch}}{{if .Arm}}v{{.Arm}}{{end}}-{{ .ProjectName }}"
+  - name_template: "{{ .ProjectName }}-{{.Os}}-{{.Arch}}{{if .Arm}}v{{.Arm}}{{end}}"
     format: tar.gz
     format_overrides:
       - goos: windows
